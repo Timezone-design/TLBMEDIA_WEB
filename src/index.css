@@ -90,6 +90,10 @@ body, html, .App, #root, .auth-wrapper {
   align-items: center;
 }
 
+.btn-upload {
+  margin-top: 20px;
+}
+
 .forgot-password,
 .forgot-password a {
   text-align: right;

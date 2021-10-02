@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import LogIn from './components/login';
+import Dashboard from './components/dashboard';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
             <Switch>
               <Route exact path='/' component={LogIn}/>
               <Route path='/login' component={LogIn}/>
-              <Route path='/dashboard' component={LogIn}/>
+              <Route path='/dashboard' component={Dashboard}/>
             </Switch>
           </div>
         </div>
