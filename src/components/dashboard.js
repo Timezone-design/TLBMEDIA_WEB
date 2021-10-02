@@ -4,7 +4,7 @@ export default function Dashboard() {
 
     const [fileName, setFileName] = useState('');
     const [date, setDate] = useState('');
-    const [fileType, setFileType] = useState('');
+    const [fileType, setFileType] = useState('audio');
     const [userName, setUserName] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
     const [remark, setRemark] = useState('');
@@ -12,14 +12,19 @@ export default function Dashboard() {
     const handleFileInput = e => {
         const file = e.target.files[0];
         console.log(file);
-        if(file.size > 1024 * 1024 * 1024)
+        if(file.size > 1024 * 1024 * 100)
             alert('File size cannot exceed more than 100MB');
         else
             setSelectedFile(file);
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        
+    }
+
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <h3>TLBMEDIA FILE UPLOAD</h3>
             <div className="form-group">
                 <label>File Name</label>
@@ -31,7 +36,7 @@ export default function Dashboard() {
             </div>
             <div className="form-group">
                 <label>File Type</label>
-                <select className="form-control">
+                <select value={fileType} className="form-control" onChange={e => setFileType(e.target.value)}>
                     <option value='audio'>Audio</option>
                     <option value='video'>Video</option>
                 </select>
@@ -42,7 +47,7 @@ export default function Dashboard() {
             </div>
             <div className="form-group">
                 <label>Select File</label>
-                <input type="file" value={selectedFile} onChange={handleFileInput}/>
+                <input type="file" onChange={handleFileInput}/>
             </div>
             <div className="form-group">
                 <label>Remarks</label>
